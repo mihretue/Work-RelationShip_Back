@@ -27,6 +27,8 @@ SECRET_KEY = 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**
 DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '192.168.1.59',"10.30.157.102", "work-relationship.onrender.com"]
 
+import os
+SECRET_KEY = os.getenv("SECRET_KEY", "your-default-secret-key")
 
 
 # Application definition
