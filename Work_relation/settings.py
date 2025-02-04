@@ -22,15 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get("S")
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower()=="true"
-# DEBUG = False
+SECRET_KEY = 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**'
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+# SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = os.environ.get("DEBUG","False").lower()=="true"
+DEBUG=True
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '192.168.1.59',"10.30.157.102", "work-relationship.onrender.com"]
 
 import os
-SECRET_KEY = os.environ.get("SECRET_KEY")
+# SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 # Application definition
@@ -113,9 +113,7 @@ DATABASES = {
     }
 }
 
-
-database_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.config(database_url)
+DATABASES["default"] = dj_database_url.parse("postgresql://workrelationship_user:eNtfPsbUD31DxjXR3mnn7Myj11ThvlOR@dpg-cuh33jjv2p9s73cqdi9g-a.oregon-postgres.render.com/workrelationship")
 # postgresql://workrelationship_user:eNtfPsbUD31DxjXR3mnn7Myj11ThvlOR@dpg-cuh33jjv2p9s73cqdi9g-a.oregon-postgres.render.com/workrelationship
 
 SIMPLE_JWT = {
@@ -162,7 +160,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
