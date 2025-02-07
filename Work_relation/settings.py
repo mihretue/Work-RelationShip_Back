@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**'
+SECRET_KEY = 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**'
 # SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**')
+# SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -115,11 +115,11 @@ WSGI_APPLICATION = 'Work_relation.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Work_relationship',  # Your actual database name
-        'USER': 'postgres',           # Your PostgreSQL username
-        'PASSWORD': "P@55@TriaMIH",   # Your PostgreSQL password
-        'HOST': 'localhost',          # Database server address
-        'PORT': '5432',               # Default PostgreSQL port
+        'NAME': 'work_relationship',  
+        'USER': 'postgres',          
+        'PASSWORD': "P@55@TriaMIH",   
+        'HOST': 'localhost',          
+        'PORT': '5432',               
     }
 }
 
