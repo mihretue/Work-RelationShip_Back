@@ -35,9 +35,9 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 
-import os
-# SECRET_KEY = os.environ.get("SECRET_KEY")
 
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+PORT = os.getenv("PORT", "8000")
 
 # Application definition
 
