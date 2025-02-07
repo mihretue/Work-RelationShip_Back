@@ -13,7 +13,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
-import dj_database_url
+from dotenv import load_dotenv
+
+
+# import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,12 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**'
+# SECRET_KEY = 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**'
+# SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG","False").lower()=="true"
-DEBUG=True
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '192.168.1.59',"10.30.157.102", "work-relationship.onrender.com"]
+DEBUG = False
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '192.168.1.59',"10.30.157.102"]
 
 import os
 # SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -108,12 +114,17 @@ WSGI_APPLICATION = 'Work_relation.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Work_relationship',  # Your actual database name
+        'USER': 'postgres',           # Your PostgreSQL username
+        'PASSWORD': "P@55@TriaMIH",   # Your PostgreSQL password
+        'HOST': 'localhost',          # Database server address
+        'PORT': '5432',               # Default PostgreSQL port
     }
 }
 
-DATABASES["default"] = dj_database_url.parse("postgresql://workrelationship_user:eNtfPsbUD31DxjXR3mnn7Myj11ThvlOR@dpg-cuh33jjv2p9s73cqdi9g-a.oregon-postgres.render.com/workrelationship")
+
+# DATABASES["default"] = dj_database_url.parse("postgresql://workrelationship_user:eNtfPsbUD31DxjXR3mnn7Myj11ThvlOR@dpg-cuh33jjv2p9s73cqdi9g-a.oregon-postgres.render.com/workrelationship")
 # postgresql://workrelationship_user:eNtfPsbUD31DxjXR3mnn7Myj11ThvlOR@dpg-cuh33jjv2p9s73cqdi9g-a.oregon-postgres.render.com/workrelationship
 
 SIMPLE_JWT = {
