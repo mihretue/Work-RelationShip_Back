@@ -25,15 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**'
-# SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+# SECRET_KEY = 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-nl+@&8-8b_@phad%!g22_-1+cnbysr6+j=fzk%%1xs9hr%!3**')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG","False").lower()=="true"
-DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '192.168.1.59',"10.30.157.102"]
+os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 
 import os
 # SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -115,14 +115,13 @@ WSGI_APPLICATION = 'Work_relation.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'work_relationship',  
-        'USER': 'postgres',          
-        'PASSWORD': "P@55@TriaMIH",   
-        'HOST': 'localhost',          
-        'PORT': '5432',               
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
-
 
 # DATABASES["default"] = dj_database_url.parse("postgresql://workrelationship_user:eNtfPsbUD31DxjXR3mnn7Myj11ThvlOR@dpg-cuh33jjv2p9s73cqdi9g-a.oregon-postgres.render.com/workrelationship")
 # postgresql://workrelationship_user:eNtfPsbUD31DxjXR3mnn7Myj11ThvlOR@dpg-cuh33jjv2p9s73cqdi9g-a.oregon-postgres.render.com/workrelationship
